@@ -45,10 +45,23 @@ public class MyService extends Service
                 }
                 StringBuffer str=new StringBuffer();
                 while(res.moveToNext()) {
-                    str.append(res.getString(1));
+                    str.append(res.getString(0));
                     Log.i(TAG,"String value retrieved from database");
 
                 }
+                res.close();
+                Cursor res1=mydb1.retrievework();
+                if(res1.getCount()==0) {
+                    Log.i(TAG,"no data");
+                    return;
+                }
+                StringBuffer str1=new StringBuffer();
+                while(res1.moveToNext()) {
+                    str1.append(res1.getString(0));
+                    Log.i(TAG,"String value retrieved from database");
+
+                }
+                res1.close();
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 String NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
 
@@ -74,7 +87,7 @@ public class MyService extends Service
                         .setTicker("Hearty365")
                         .setPriority(NotificationManager.IMPORTANCE_MAX)
                         .setContentTitle("work is scheduled")
-                        .setContentText("Hi dhivya,do the work: "+str)
+                        .setContentText("Hi dhivya,do the work: "+str+"from "+str1)
                         .setChannelId(NOTIFICATION_CHANNEL_ID)
                         .setLights(Color.GREEN, 3000, 3000)
                         .setOngoing(true)
