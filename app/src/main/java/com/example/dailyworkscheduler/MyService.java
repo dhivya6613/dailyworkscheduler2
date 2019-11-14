@@ -100,7 +100,7 @@ public class MyService extends Service
                 startForeground(1,notification);
                 stopSelf();
             }
-        },1,2,SECONDS);
+        },1,1,SECONDS);
         mydb1.closeDB();
         return START_NOT_STICKY;
     }
