@@ -1,3 +1,4 @@
+
 package com.example.dailyworkscheduler;
 
 import android.content.BroadcastReceiver;
@@ -14,7 +15,8 @@ public class AutoStart extends BroadcastReceiver {
 
         try {
             Log.i(TAG, "Inside on receive of AutoStart receiver");
-            context.startService(new Intent(context, MyService.class));
+            context.startForegroundService(new Intent(context, MyService.class));
+            //context.startService(new Intent(context, MyService.class));
         } catch (Exception ex) {
             Log.e(TAG, "Exception is : " + ex);
         }

@@ -6,9 +6,9 @@
     <application
         android:fullBackupContent="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="Daily work Scheduler"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="false"
@@ -18,17 +18,13 @@
         <receiver android:name=".AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
 
         <service android:name=".MyService">
         </service>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="Daily Work Scheduler">
 
-
-        </activity>
         <activity
             android:name=".MainActivity"
             android:label="Daily Work Scheduler">
@@ -40,15 +36,25 @@
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Daily Work Scheduler">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Daily Work Scheduler">
+
+        </activity>
 
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

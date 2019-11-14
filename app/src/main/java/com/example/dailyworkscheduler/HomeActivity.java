@@ -22,8 +22,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
-import com.example.dailyworkscheduler.ui.login.LoginActivity;
-
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -92,7 +90,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager=getFragmentManager();
         if(id==R.id.nav_home){
-            
+
             dataInserted();
         } else if (id == R.id.nav_gallery) {
            // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new LoginActivity()).commit();

@@ -25,7 +25,7 @@ public class Activity2 extends AppCompatActivity {
 
 
 
-    public static final String TAG = BuildConfig.APPLICATION_ID;
+    public static final String TAG ="activity2tag";
     public String mNotificationChannelId = null;
 
 
@@ -112,6 +112,7 @@ public class Activity2 extends AppCompatActivity {
                                 .setContentText("Hi dhivya,do the work: "+str+" from "+str1)
                                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                                 .setOngoing(true)
+                                .setAutoCancel(true)
                                 .setContentInfo("Info");
 
                         notificationManager.notify(/*notification id*/1, notificationBuilder.build());

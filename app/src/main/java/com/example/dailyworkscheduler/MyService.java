@@ -19,6 +19,7 @@ import android.util.Log;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
+import static java.util.concurrent.TimeUnit.MINUTES;
 import static java.util.concurrent.TimeUnit.SECONDS;
 public class MyService extends Service
 {
@@ -50,7 +51,7 @@ public class MyService extends Service
 
                 }
                 res.close();
-                Cursor res1=mydb1.retrievework();
+                /*Cursor res1=mydb1.retrievetimefrom();
                 if(res1.getCount()==0) {
                     Log.i(TAG,"no data");
                     return;
@@ -60,8 +61,7 @@ public class MyService extends Service
                     str1.append(res1.getString(0));
                     Log.i(TAG,"String value retrieved from database");
 
-                }
-                res1.close();
+                }*/
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 String NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
 
@@ -87,17 +87,20 @@ public class MyService extends Service
                         .setTicker("Hearty365")
                         .setPriority(NotificationManager.IMPORTANCE_MAX)
                         .setContentTitle("work is scheduled")
-                        .setContentText("Hi dhivya,do the work: "+str+"from "+str1)
+                        .setContentText("Hi dhivya,do the work: "+str)
                         .setChannelId(NOTIFICATION_CHANNEL_ID)
                         .setLights(Color.GREEN, 3000, 3000)
                         .setOngoing(true)
+                        .setAutoCancel(true)
                         .setContentInfo("Info");
 
                 notificationManager.notify(/*notification id*/1, notificationBuilder.build());
+                Notification notification=notificationBuilder.build();
                 Log.i("notification", "notification is called");
+                startForeground(1,notification);
                 stopSelf();
             }
-        },3,3,SECONDS);
+        },1,2,SECONDS);
         mydb1.closeDB();
         return START_NOT_STICKY;
     }
